@@ -1,0 +1,107 @@
+.b-header-main {
+    padding:1em;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    -o-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    -moz-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    background: url('../img/log/header.jpg');
+    background-size:cover;
+}
+.b-logo-w3-agile {
+    float: left;
+    width: 24.25%;
+    text-align: center;
+    padding: 1em;
+    margin-right: 1%;
+}
+.b-w3layouts-left {
+    float: left;
+    width: 24.25%;
+    padding: 1em;
+}
+.b-w3layouts-right {
+    float: left;
+    width: 24.25%;
+    text-align: center;
+    padding: 1.3em 1em 0.1em;
+    margin: 0 1%;
+}
+.b-left-content{
+    width:87%;
+    padding: 0 2em;
+    margin-left: 11.3%;
+}
+.b-sidebar-menu{
+    position: fixed;
+    float: left;
+    width: 12%;
+    min-width: 5em;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color:#333333;
+    color: #aaabae;
+    box-shadow: 0px 0px 10px 0px rgb(58, 41, 31);
+    -o-box-shadow: 0px 0px 10px 0px rgb(58, 41, 31);
+    -webkit-box-shadow: 0px 0px 10px 0px rgb(58, 41, 31);
+    -moz-box-shadow: 0px 0px 10px 0px rgb(58, 41, 31);
+    z-index: 999;
+}
+.b-w3layouts-left {
+    float: left;
+    width: 24.25%;
+    background: #ff9501;
+    padding: 1em;
+}
+@media (max-width: 1440px) {
+    .b-w3layouts-left{
+        font-size: 12px;
+    }
+}
+@media (max-width:1280px){
+    .b-sidebar-menu{
+        font-size: 10px;
+    }
+}
+@media (max-width:1024px){
+    .b-sidebar-menu{
+        font-size: 8px;
+    }
+}
+@media (max-width: 1080px) {
+    .b-w3layouts-left {
+        padding: 0.73em;
+    }
+}
+@media (max-width:800px) {
+    .b-sidebar-menu{
+        font-size: 6px;
+    }
+    .b-w3layouts-left {
+        width: 48%;
+        margin-bottom:1em;
+        font-size: 15px;
+    }
+}
+/*@media (max-width:320px) {*/
+    /*.b-sidebar-menu{*/
+        /*font-size: 8px;*/
+    /*}*/
+/*}*/
+@media (max-width: 640px) {
+    .b-sidebar-menu {
+        font-size: 12px;
+        transition: all 100ms ease-in-out;
+        transition-delay: 300ms;
+    }
+    .b-w3layouts-left{
+        font-size: 10px;
+    }
+}
+@media (max-width: 480px) {
+    .b-w3layouts-left {
+        width: 100%;
+        margin-bottom: 1em;
+    }
+
+}
