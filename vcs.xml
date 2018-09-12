@@ -6,6 +6,10 @@
           <option name="url" value="https://github.com/ZGHS/GreatWork.git" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/k15122131474/SFAWeb.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
     <option name="cloneParentDir" value="E:\isoft\gitclone\SFAWeb" />
