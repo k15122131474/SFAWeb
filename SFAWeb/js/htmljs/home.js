@@ -108,9 +108,10 @@ function get_cookie(Name) {
     return returnvalue;
 }
 
-document.load(
-    function (){
+
+window.onload=function (){
         var username=get_cookie("username");
-        alert(username);
+        $("#username").text(username);
+        var roles=get_cookie("userRole")
+        $("#roles").text(roles);
     }
-)
