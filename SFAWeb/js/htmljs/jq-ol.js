@@ -17,7 +17,6 @@ function ioclick(a){
    //     var a= $(a).parent();
     }
     //var para= " <li class=\"breadcrumb-item\"><a onclick=\"setiframe(a)\">"+ a.text+"<i class=\"fa fa-angle-right\"></i></li>"
-    alert(para);
     $("#ol").append(para);
 
 }
