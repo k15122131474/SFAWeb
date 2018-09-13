@@ -7,17 +7,37 @@
     background: url('../img/log/header.jpg');
     background-size:cover;
 }
+.b-user-name{
+    float:left;
+    margin-top:7px;
+    margin-left:11px;
+    height:35px;
+    font-size: 0.8em;
+}
 .b-logo-w3-agile {
+    background: #a2d200;
     float: left;
-    width: 24.25%;
+    width: 20%;
     text-align: center;
-    padding: 1em;
+    padding: 0px;
+    margin: 0px;
     margin-right: 1%;
+}
+.b-user-name p{
+    font-size:1em;
+    color:#fff;
+    line-height:1em;
+    font-weight:700;
 }
 .b-w3layouts-left {
     float: left;
-    width: 24.25%;
+    width: 49%;
     padding: 1em;
+    font-size: 1.2em;
+    font-family:"微软雅黑";
+    font-weight:bold;
+    vertical-align:middle;
+    overflow: hidden;
 }
 .b-w3layouts-right {
     float: left;
@@ -47,20 +67,20 @@
     -moz-box-shadow: 0px 0px 10px 0px rgb(58, 41, 31);
     z-index: 999;
 }
-.b-w3layouts-left {
-    float: left;
-    width: 24.25%;
-    background: #ff9501;
-    padding: 1em;
-}
 @media (max-width: 1440px) {
     .b-w3layouts-left{
-        font-size: 12px;
+        font-size: 1em;
     }
 }
 @media (max-width:1280px){
     .b-sidebar-menu{
         font-size: 10px;
+    }
+    .b-user-name{
+        font-size: 0.6em;
+    }
+    .b-w3layouts-left{
+        font-size: 0.6em;
     }
 }
 @media (max-width:1024px){
@@ -72,21 +92,27 @@
     .b-w3layouts-left {
         padding: 0.73em;
     }
+
 }
 @media (max-width:800px) {
+    .b-logo-w3-agile {
+        width: 48%;
+        margin-right: 4%;
+        margin-bottom:1em;
+    }
     .b-sidebar-menu{
         font-size: 6px;
     }
     .b-w3layouts-left {
         width: 48%;
         margin-bottom:1em;
-        font-size: 15px;
+        font-size: 0.4em;
     }
 }
 /*@media (max-width:320px) {*/
-    /*.b-sidebar-menu{*/
-        /*font-size: 8px;*/
-    /*}*/
+/*.b-sidebar-menu{*/
+/*font-size: 8px;*/
+/*}*/
 /*}*/
 @media (max-width: 640px) {
     .b-sidebar-menu {
@@ -95,7 +121,7 @@
         transition-delay: 300ms;
     }
     .b-w3layouts-left{
-        font-size: 10px;
+        font-size: 0.3em;
     }
 }
 @media (max-width: 480px) {
@@ -103,5 +129,14 @@
         width: 100%;
         margin-bottom: 1em;
     }
-
+    .b-logo-w3-agile {
+        width: 100%;
+        margin-bottom: 1em;
+        margin-right: 0;
+    }
+}
+@media (max-width: 320px) {
+    .b-logo-w3-agile {
+        padding: 0.5em;
+    }
 }
