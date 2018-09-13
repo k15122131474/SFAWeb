@@ -1,0 +1,196 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Tabels</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="" />
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<!-- Bootstrap Core CSS -->
+	<link href="../../css/bootstrap/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+	<!-- Custom CSS -->
+	<link href="../../css/bootstrap/css/style.css" rel='stylesheet' type='text/css' />
+	<link rel="stylesheet" href="../../css/bootstrap/css/morris.css" type="text/css"/>
+	<!-- Graph CSS -->
+	<link href="../../css/bootstrap/css/font-awesome.css" rel="stylesheet">
+	<!-- jQuery -->
+	<script src="../../js/jquery-2.1.4.min.js"></script>
+	<!-- //jQuery -->
+	<!-- tables -->
+	<link rel="stylesheet" type="text/css" href="../../css/bootstrap/css/table-style.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/bootstrap/css/basictable.css" />
+	<script type="text/javascript" src="../../js/jquery.basictable.min.js"></script>
+	<script type="text/javascript">
+        $(document).ready(function() {
+            $('#table').basictable();
+
+            $('#table-breakpoint').basictable({
+                breakpoint: 768
+            });
+
+            $('#table-swap-axis').basictable({
+                swapAxis: true
+            });
+
+            $('#table-force-off').basictable({
+                forceResponsive: false
+            });
+
+            $('#table-no-resize').basictable({
+                noResize: true
+            });
+
+            $('#table-two-axis').basictable();
+
+            $('#table-max-height').basictable({
+                tableWrapper: true
+            });
+        });
+	</script>
+	<!-- //tables -->
+	<link href='http://fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet' type='text/css'/>
+	<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	<!-- lined-icons -->
+	<link rel="stylesheet" href="../../css/bootstrap/css/icon-font.min.css" type='text/css' />
+	<!-- //lined-icons -->
+</head>
+<body>
+<div class="page-container">
+	<!--/content-inner-->
+
+
+	<!--heder end here-->
+
+	<div class="agile-grids">
+		<!-- tables -->
+
+		<div class="agile-tables">
+			<div class="w3l-table-info">
+				<h2>题目</h2>
+				<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" style="float: right;"> 添加</button>
+				<!-- 模态框（Modal） -->
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				    <div class="modal-dialog">
+				        <div class="modal-content">
+				            <div class="modal-header">
+				                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+				                    &times;
+				                </button>
+				                <h4 class="modal-title" id="myModalLabel">
+				                   数据字典
+				                </h4>
+				            </div>
+				            <form  class="form-horizontal" role="form">
+					            <div class="form-group">
+		                            <label for="user_id" class="col-sm-3 control-label">数据字典代码</label>
+		                            <div class="col-sm-9">
+		                                <input type="text" class="form-control" id="t_dic_code" value=""
+		                                       placeholder="请输入数据字典代码">
+		                            </div>
+	                        	</div>
+	                        	<div class="form-group">
+		                            <label for="user_id" class="col-sm-3 control-label">数据字典名称</label>
+		                            <div class="col-sm-9">
+		                                <input type="text" class="form-control" id="t_name"  value=""
+		                                       placeholder="请输入数据字典名称">
+		                            </div>
+	                        	</div>
+	                        	<div class="form-group">
+		                            <label for="user_id" class="col-sm-3 control-label">数据字典类型</label>
+		                            <div class="col-sm-9">
+		                                <input type="text" class="form-control" id="t_type"  value=""
+		                                       placeholder="请输入数据字典类型">
+		                            </div>
+	                        	</div>
+	                       <div class="modal-footer">
+			                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+			                    </button>
+			                    <button type="submit" class="btn btn-primary" onclick="submitZiDian()" >
+			                        提交
+			                    </button><span id="tip"> </span>
+			                </div>
+		                        
+				            </form>
+				        </div><!-- /.modal-content -->
+				    </div><!-- /.modal -->
+				</div>
+
+				<table id="table">
+					<thead>
+					<tr>
+						<th>jingshuzhi</th>
+						<th>Age</th>
+						<th>Gender</th>
+						<th>Height</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>Jill Smith</td>
+						<td>25</td>
+						<td>Female</td>
+						<td>5'4</td>
+					</tr>
+					<tr>
+						<td>John Stone</td>
+						<td>30</td>
+						<td>Male</td>
+						<td>5'9</td>
+						
+					</tr>
+					<tr>
+						<td>Jane Strip</td>
+						<td>29</td>
+						<td>Female</td>
+						<td>5'6</td>
+						
+					</tr>
+					<tr>
+						<td>Gary Mountain</td>
+						<td>21</td>
+						<td>Male</td>
+						<td>5'8</td>
+						
+					</tr>
+					<tr>
+						<td>James Camera</td>
+						<td>31</td>
+						<td>Male</td>
+						<td>6'1</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+			<code class="js">
+				$('#table').basictable();
+			</code>
+
+			
+		</div>
+		<!-- //tables -->
+	</div>
+	<!-- script-for sticky-nav -->
+
+	<!-- /script-for sticky-nav -->
+	<!--inner block start here-->
+	<div class="inner-block">
+
+		<!--inner block end here-->
+		<!--copy rights start here-->
+
+		<!--COPY rights end here-->
+	</div>
+</div>
+<!--//content-inner-->
+<!--/sidebar-menu-->
+
+<!--js -->
+<script src="../../js/jquery.nicescroll.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/htmljs/tabels-zidian.js"></script>
+<!-- /Bootstrap Core JavaScript -->
+
+</body>
+</html>
