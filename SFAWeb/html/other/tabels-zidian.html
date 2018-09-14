@@ -19,6 +19,10 @@
 	<!-- tables -->
 	<link rel="stylesheet" type="text/css" href="../../css/bootstrap/css/table-style.css" />
 	<link rel="stylesheet" type="text/css" href="../../css/bootstrap/css/basictable.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/bootstrap/css/reset.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap/css/highlight.min.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap/css/common.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap/css/pagination.css" media="screen">
 	<script type="text/javascript" src="../../js/jquery.basictable.min.js"></script>
 	<script type="text/javascript">
         $(document).ready(function() {
@@ -118,52 +122,30 @@
 				<table id="table">
 					<thead>
 					<tr>
-						<th>jingshuzhi</th>
-						<th>Age</th>
-						<th>Gender</th>
-						<th>Height</th>
+						<th>编号</th>
+						<th>数据字典代码</th>
+						<th>数据字典名称</th>
+						<th>数据字典类型</th>
+						<th>操作</th>
 					</tr>
 					</thead>
-					<tbody>
-					<tr>
-						<td>Jill Smith</td>
-						<td>25</td>
-						<td>Female</td>
-						<td>5'4</td>
-					</tr>
-					<tr>
-						<td>John Stone</td>
-						<td>30</td>
-						<td>Male</td>
-						<td>5'9</td>
-						
-					</tr>
-					<tr>
-						<td>Jane Strip</td>
-						<td>29</td>
-						<td>Female</td>
-						<td>5'6</td>
-						
-					</tr>
-					<tr>
-						<td>Gary Mountain</td>
-						<td>21</td>
-						<td>Male</td>
-						<td>5'8</td>
-						
-					</tr>
-					<tr>
-						<td>James Camera</td>
-						<td>31</td>
-						<td>Male</td>
-						<td>6'1</td>
-					</tr>
+					<tbody id="datalist1">
+					
 					</tbody>
 				</table>
+			
+				<div class="wrapper" >
+					<div class="eg">
+						<div class="m-style M-box"></div>
+						<!--<div class="tips">当前是第<span class="now">1</span>页,总共<span class="total"></span>页,总共<span class="count"></span>条数据</div>-->
+					</div>
+				</div>
+
 			</div>
 			<code class="js">
 				$('#table').basictable();
 			</code>
+		
 
 			
 		</div>
@@ -189,6 +171,8 @@
 
 <!-- Bootstrap Core JavaScript -->
 <script src="../../js/bootstrap.min.js"></script>
+   <script src="../../js/highlight.min.js"></script>
+    <script src="../../js/jquery.pagination.js"></script>
 <script src="../../js/htmljs/tabels-zidian.js"></script>
 <!-- /Bootstrap Core JavaScript -->
 
