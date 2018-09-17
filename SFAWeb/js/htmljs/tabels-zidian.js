@@ -102,7 +102,7 @@ function submitZiDian(){
 //                  }
                 });
 }
-function shanChu(id) () {
+function shanChu(id) {
 	var datas={"tDicId":id};
 	$.ajax(
                 {
@@ -122,7 +122,7 @@ function shanChu(id) () {
                     },
                 });
 }
-function xiuGai(id) () {
+function xiuGai(id) {
 	
 	
 	var datas={"tDicId":id};
