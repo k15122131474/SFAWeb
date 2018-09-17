@@ -28,12 +28,12 @@ function createCode(){
 								$("")
 								datalist+='<tr>'+
 									      
-					            		      '<td>'+(i+1)+'</td>'+
+					            		      '<td>'+((i+1)+(4*(pno-1)))+'</td>'+
 					            		      '<td>'+item.tDicCode+'</td>'+
 					            		      '<td>'+item.tName+'</td>'+
 					            		      '<td>'+item.tType+'</td>'+
 					            		      '<td><span> <button type="button" class="btn btn-danger glyphicon glyphicon-minus" onclick="shanChu('+item.tDicId +')"> 删除 </button> </span> '+
-					            		      '<span> <button type="button" class="btn btn-warning glyphicon glyphicon-edit onclick="xiuGai('+item.tDicId +')" > 修改 </button> </span>'+
+					            		      '<span> <button type="button" class="btn btn-warning glyphicon glyphicon-edit" data-toggle="modal" data-target="#myModal" onclick="chaxundan('+item.tDicId +')" > 修改 </button> </span>'+
 					            		      '</td>'+
 					            		  '</tr>';
 					        });
@@ -103,13 +103,40 @@ function submitZiDian(){
                 });
 }
 function shanChu(id) {
-	var datas={"tDicId":id};
+	var datas={"id":id};
 	$.ajax(
                 {
                 	type: "post",
                     url: "http://localhost:8077/t/dic/code/delete",
-                    data:JSON.stringify(datas),
-                    contentType: "application/json", 
+                    data:{"id":id},
+                    //contentType: "application/json", 
+                    dataType:"Json",
+  
+                    success:function(data)
+                    {
+               
+                        alert('删除成功');
+                    },
+                    error:function()
+                    {
+                        alert('请求出错');
+                    },
+                });
+}
+var zdID="";
+function xiuGai() {
+	
+	var tDicCode=$("#t_dic_code").val();
+	var tName=$("#t_name").val();
+	var tType=$("#t_type").val();
+	var datas={"tDicId":zdID,'tDicCode':tDicCode, 'tName':tName,'tType':tType};
+	
+	$.ajax(
+                {
+                	type: "post",
+                    url: "http://localhost:8077/t/dic/code/update",
+                    data:datas,
+                    //contentType: "application/json", 
                     dataType:"Json",
   
                     success:function(data)
@@ -122,25 +149,42 @@ function shanChu(id) {
                     },
                 });
 }
-function xiuGai(id) {
-	
-	
-	var datas={"tDicId":id};
+
+function chaxundan(id){
+	var htmls='<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>'+
+	'<button id="tijiao" type="submit" class="btn btn-primary" onclick="xiuGai()"> 提交</button><span id="tip">';
+	zdID=id;		                        
+			                     
+	$("#tijiao").html(htmls);
 	$.ajax(
                 {
                 	type: "post",
-                    url: "http://localhost:8077/t/dic/code/update",
-                    data:JSON.stringify(datas),
-                    contentType: "application/json", 
+                    url: "http://localhost:8077/t/dic/code/detail",
+                    data:{"id":id},
+                    //contentType: "application/json", 
                     dataType:"Json",
   
                     success:function(data)
                     {
-                        alert('cehg');
+                    	console.log(data.data.tDicCode);
+        				$("#t_dic_code").val(data.data.tDicCode);
+        				$("#t_name").val(data.data.tName);
+        				$("#t_type").val(data.data.tType);
+        				
                     },
                     error:function()
                     {
                         alert('请求出错');
                     },
                 });
+}
+function tianjia(){
+	var htmls='<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>'+
+	'<button id="tijiao" type="submit" class="btn btn-primary" onclick="submitZiDian()"> 提交</button><span id="tip">';
+			                        
+			                     
+	$("#tijiao").html(htmls);
+	$("#t_dic_code").val("");
+	$("#t_name").val("");
+	$("#t_type").val("");
 }
