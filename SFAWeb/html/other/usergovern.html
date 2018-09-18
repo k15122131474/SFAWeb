@@ -20,23 +20,196 @@
     <!-- tables -->
     <link rel="stylesheet" type="text/css" href="../../css/bootstrap/css/table-style.css" />
     <link rel="stylesheet" type="text/css" href="../../css/bootstrap/css/basictable.css" />
+    <script type="text/javascript" src="../../js/htmljs/usergonvern.js"/>
     <script type="text/javascript" src="../../js/jquery.basictable.min.js"></script>
+    <script type="text/javascript" src="../../js/htmljs/md5.js"/>
     <!-- //tables -->
     <link href='http://fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet' type='text/css'/>
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <!-- lined-icons -->
     <link rel="stylesheet" href="../../css/bootstrap/css/icon-font.min.css" type='text/css' />
     <!-- //lined-icons -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#table').basictable();
+
+            $('#table-breakpoint').basictable({
+                breakpoint: 768
+            });
+
+            $('#table-swap-axis').basictable({
+                swapAxis: true
+            });
+
+            $('#table-force-off').basictable({
+                forceResponsive: false
+            });
+
+            $('#table-no-resize').basictable({
+                noResize: true
+            });
+
+            $('#table-two-axis').basictable();
+
+            $('#table-max-height').basictable({
+                tableWrapper: true
+            });
+        });
+    </script>
 </head>
-<body>
-<div>
-    <nav class="navbar navbar-default navbar-static-top" style="padding-left: 1em;background: #FFFFFF">
+<body style="background: #FFFFFF">
+<div class="">
+    <nav class="navbar navbar-default navbar-static-top" >
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">查询用户信息</a>
-            <a class="navbar-brand" href="#">修改用户信息</a>
-            <a class="navbar-brand" href="#">注册新用户</a>
+            <a class="navbar-brand" href="#" data-toggle="modal" data-target="#insertmodle" onclick="unlockadd()">注册新用户</a>
+        </div>
+        <div class="input-group" style="margin-top: 0.5em;margin-right: 1em;float: right;width: 30%">
+            <input id="select-user-id" type="text" class="form-control" placeholder="输入用户id" aria-describedby="basic-addon2" >
+            <span class="input-group-addon" id="basic-addon2" style="width: 10%"><button style="border: none"  onclick="selectuser()">查询</button></span>
         </div>
     </nav>
+    <div class="page-container">
+        <!--/content-inner-->
+
+
+        <!--heder end here-->
+
+        <div class="agile-grids">
+            <!-- tables -->
+
+            <div class="agile-tables" style="padding-top: 0em;">
+                <div class="w3l-table-info" style="min-height: 400px">
+                    <h2>用户信息</h2>
+                    <table id="table">
+                        <thead>
+                        <tr>
+                            <th>姓名</th>
+                            <th>性别</th>
+                            <th>手机号</th>
+                            <th>邮箱</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody id="tbody">
+                        <tr>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="insertmodle" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop='static'>
+        <div class="modal-dialog" style="margin-top: 0em">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        填写信息
+                    </h4>
+                </div>
+                <div class="modal-body" style="text-align: center">
+                    <div>用户名：<input id="mod-id"><br><br></div>
+                    <div id="pwd-div">密&nbsp&nbsp&nbsp&nbsp码：<input type="password" id="mod-pwd"><br><br></div>
+                    <div id="pwd-name">姓&nbsp&nbsp&nbsp&nbsp名：<input type="text" id="mod-name"><br></div>
+                    <br>
+                    <hr>
+                    <div style="text-align: center">性&nbsp&nbsp&nbsp&nbsp别</div>
+                    <div class="dropdown" style="float:left;width: 40%;left:30%;border-width: 1px;border-style: solid">
+                        <a id="sex-a" data-toggle="dropdown" href="#" style="color: #000">---选择性别----</a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                            <li style="text-align: center;" onclick="checksex(this)"><a>男</a>
+                            </li>
+                            <li style="text-align: center;" onclick="checksex(this)"><a>女</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <br>
+                    <hr>
+                    <div>邮&nbsp&nbsp&nbsp&nbsp件：<input type="email" id="mod-email"><br><br></div>
+                    <div>手机号：<input type="tel" id="mod-phone"><br><br></div>
+                    <button id="conbtn" style="margin:1em;" onclick="addpeople()">提交</button>
+                    <button style="margin:1em;" onclick="unlock()">重置</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="updatamodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop='static'>
+        <div class="modal-dialog" style="margin-top: 0em">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="updataModalLabel">
+                        填写信息
+                    </h4>
+                </div>
+                <div class="modal-body" style="text-align: center">
+                    <div>用户名：<input id="u-mod-id" readonly  unselectable="on"><br><br></div>
+                    <div id="u-pwd-div">密&nbsp&nbsp&nbsp&nbsp码：<input type="password" id="u-mod-pwd"><br><br></div>
+                    <div id="u-pwd-name">姓&nbsp&nbsp&nbsp&nbsp名：<input type="text" id="u-mod-name"><br></div>
+                    <br>
+                    <hr>
+                    <div style="text-align: center">性&nbsp&nbsp&nbsp&nbsp别</div>
+                    <div class="dropdown" style="float:left;width: 40%;left:30%;border-width: 1px;border-style: solid">
+                        <a id="u-sex-a" data-toggle="dropdown" href="#" style="color: #000">---选择性别----</a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                            <li style="text-align: center;" onclick="uchecksex(this)"><a>男</a>
+                            </li>
+                            <li style="text-align: center;" onclick="uchecksex(this)"><a>女</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <br>
+                    <hr>
+                    <div>邮&nbsp&nbsp&nbsp&nbsp件：<input type="email" id="u-mod-email"><br><br></div>
+                    <div>手机号：<input type="tel" id="u-mod-phone"><br><br></div>
+                    <hr>
+                    <div class="dropdown" style="float:left;width: 40%;left:30%;border-width: 1px;border-style: solid">
+                        <a id="u-role" data-toggle="dropdown" href="#" style="color: #000">权限</a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                            <li style="text-align: center;" onclick="ucheckrole(this)"><a>admin</a>
+                            </li>
+                            <li style="text-align: center;" onclick="ucheckrole(this)"><a>strator</a>
+                            </li>
+                            <li style="text-align: center;" onclick="ucheckrole(this)"><a>systemstrator</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <br>
+                    <hr>
+                    <div class="dropdown" style="float:left;width: 40%;left:30%;border-width: 1px;border-style: solid">
+                        <a id="u-status" data-toggle="dropdown" href="#" style="color: #000">状态</a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                            <li style="text-align: center;" onclick="ucheckstatus(this)"><a>开启</a>
+                            </li>
+                            <li style="text-align: center;" onclick="ucheckstatus(this)"><a>锁定</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <br>
+                    <hr>
+                    <button id="updatabtn" style="margin:1em;" onclick="commitUpdata()">提交</button>
+                    <button style="margin:1em;" onclick="reset()">重置</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 模态框（Modal） -->
 </div>
+
+
+<!--js -->
+<script src="../../js/jquery.nicescroll.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../../js/bootstrap.min.js"></script>
+<!-- /Bootstrap Core JavaScript -->
+
 </body>
 </html>
