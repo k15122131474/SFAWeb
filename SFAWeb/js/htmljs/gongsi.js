@@ -12,7 +12,75 @@ $(function() {// 初始化内容
 		minView: 2,
 		forceParse: 0
     });
-     
+     $('#username').bind('input propertychange', function() {
+     var s=$(this).val();
+     		var totalPage =1;//总共多少页
+				var totalRecords = 1;//总共多少条
+				var pageSize=4;//每页显示多少页
+				loadList(1);
+				function loadList(pno)
+				{
+				$.ajax({
+					type:"post",
+				    url:"http://localhost:8077/t/company/list",
+					dataType: "json",
+					data: { 'page': pno,'size': pageSize,'s':s},
+					success:function(result) {
+						console.log(result);
+						console.log(pno);
+						if (result.code=="200") {
+							var count = result.data.total;
+		                    var data = result.data.list;
+		                    totalRecords = count;
+		                    totalPage = Math.ceil(count / pageSize);
+		                    var datalist="";
+		                 
+							$.each(data, function(i, item) {
+								$("")
+								datalist+='<tr>'+
+									      
+					            		      '<td>'+((i+1)+(4*(pno-1)))+'</td>'+
+					            		      '<td>'+item.tComName+'</td>'+
+					            		      '<td>'+item.tOrgCode+'</td>'+
+					            		      '<td>'+item.tAddress+'</td>'+
+					            		      '<td>'+item.tZhuceriqi+'</td>'+
+					            		      '<td>'+item.tZhuciziben+'</td>'+
+					            		      '<td>'+item.tFaren+'</td>'+
+					            		      '<td><span> <button type="button" class="btn btn-danger glyphicon glyphicon-minus" onclick="shanChu('+item.tComId +')"> 删除 </button> </span> '+
+					            		      '<span> <button type="button" class="btn btn-warning glyphicon glyphicon-edit" data-toggle="modal" data-target="#myModal" onclick="chaxundan('+item.tComId +')" > 修改 </button> </span>'+
+					            		      '</td>'+
+					            		  '</tr>';
+					        });
+					        
+							$("#datalist1").html(datalist);
+							$('.total').text(totalPage); 
+							$('.count').text(count); 
+							$('.M-box').pagination({
+								pageCount: totalPage,
+								current:pno,//当前第几页
+//								jump: true,
+//								coping: true,
+								homePage: '首页',
+								endPage: '末页',
+								prevContent: '上页',
+								nextContent: '下页',
+								callback:PageClick
+							});
+						}			
+					},
+		            error: function (XMLHttpRequest, textStatus, errorThrown) {
+							alert('网络连接异常，请重试！')
+		            }
+				});
+				}
+                //回调函数  
+                PageClick = function(index){
+                    $('.now').text(index.getCurrent()); 
+ 					loadList(index.getCurrent());//点击分页加载列表数据  */
+               }
+		})
+
+
 });
 function createCode(){
 				var totalPage =1;//总共多少页
