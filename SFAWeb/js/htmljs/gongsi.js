@@ -46,8 +46,8 @@ $(function() {// 初始化内容
 					            		      '<td>'+item.tZhuceriqi+'</td>'+
 					            		      '<td>'+item.tZhuciziben+'</td>'+
 					            		      '<td>'+item.tFaren+'</td>'+
-					            		      '<td><span> <button type="button" class="btn btn-danger glyphicon glyphicon-minus" onclick="shanChu('+item.tComId +')"> 删除 </button> </span> '+
-					            		      '<span> <button type="button" class="btn btn-warning glyphicon glyphicon-edit" data-toggle="modal" data-target="#myModal" onclick="chaxundan('+item.tComId +')" > 修改 </button> </span>'+
+					            		      '<td><span> <button type="button" data-toggle="modal" data-target="#myModal"  onclick="chaxundan('+item.tComId +')"> <span class=\"glyphicon glyphicon-pencil\"></span> </button> </span> '+
+					            		      '<span> <button type="button"   onclick="shanChu('+item.tComId +')" > <span class=\"glyphicon glyphicon-trash\"></span>  </button> </span>'+
 					            		      '</td>'+
 					            		  '</tr>';
 					        });
@@ -115,8 +115,8 @@ function createCode(){
 					            		      '<td>'+item.tZhuceriqi+'</td>'+
 					            		      '<td>'+item.tZhuciziben+'</td>'+
 					            		      '<td>'+item.tFaren+'</td>'+
-					            		      '<td><span> <button type="button" class="btn btn-danger glyphicon glyphicon-minus" onclick="shanChu('+item.tComId +')"> 删除 </button> </span> '+
-					            		      '<span> <button type="button" class="btn btn-warning glyphicon glyphicon-edit" data-toggle="modal" data-target="#myModal" onclick="chaxundan('+item.tComId +')" > 修改 </button> </span>'+
+					            		      '<td><span> <button type="button" data-toggle="modal" data-target="#myModal"  onclick="chaxundan('+item.tComId +')"> <span class=\"glyphicon glyphicon-pencil\"></span> </button> </span> '+
+					            		      '<span> <button type="button"   onclick="shanChu('+item.tComId +')" > <span class=\"glyphicon glyphicon-trash\"></span>  </button> </span>'+
 					            		      '</td>'+
 					            		  '</tr>';
 					        });
@@ -201,7 +201,8 @@ function shanChu(id) {
                     success:function(data)
                     {
                
-                        alert('删除成功');
+                        window.location.reload();
+                        
                     },
                     error:function()
                     {
