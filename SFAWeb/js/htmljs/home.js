@@ -78,6 +78,7 @@ function logout(){
             if (data.data != null && data.code == 200) {
                 //
                 alert(data.message);
+                $.cookie('mycookie', null,{path: '/',expires: -1});
                 window.location.href="index.html";
             } else {
                 alert(data.message);

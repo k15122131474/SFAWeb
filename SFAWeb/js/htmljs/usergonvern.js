@@ -187,7 +187,6 @@ function addpeople(){
 window.onload=function(){
     var td="";
     var role = get_cookie("userRole");
-    alert("不要这么皮呦");
     if(role==="admin"){
         window.location.href="../home.html";
     }
