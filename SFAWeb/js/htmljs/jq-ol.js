@@ -22,7 +22,11 @@ function ioclick(a){
 }
 
 
-function lodeiframe(){
-    var h=document.getElementById("iframe-info");
-    h.setAttribute('height',h.contentWindow.document.body.clientHeight);
+function lodeiframe() {
+    //var h = document.getElementById("iframe-info");
+    //asdff = h.contentWindow.document.body.scrollHeight;
+    //if (parseInt(asdff) > 500) {
+    //    alert(asdff);
+    //    h.setAttribute('height', asdff);
+    //}
 }

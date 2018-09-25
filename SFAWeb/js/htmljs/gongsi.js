@@ -1,5 +1,5 @@
 
-$(function() {// 初始化内容
+window.onload=function() {// 初始化内容
     createCode();
     $('.form_date').datetimepicker({
     	format: "yyyy-mm-dd",
@@ -34,11 +34,11 @@ $(function() {// 初始化内容
 		                    totalRecords = count;
 		                    totalPage = Math.ceil(count / pageSize);
 		                    var datalist="";
-		                 
+
 							$.each(data, function(i, item) {
 								$("")
 								datalist+='<tr>'+
-									      
+
 					            		      '<td>'+((i+1)+(4*(pno-1)))+'</td>'+
 					            		      '<td>'+item.tComName+'</td>'+
 					            		      '<td>'+item.tOrgCode+'</td>'+
@@ -51,10 +51,10 @@ $(function() {// 初始化内容
 					            		      '</td>'+
 					            		  '</tr>';
 					        });
-					        
+
 							$("#datalist1").html(datalist);
-							$('.total').text(totalPage); 
-							$('.count').text(count); 
+							$('.total').text(totalPage);
+							$('.count').text(count);
 							$('.M-box').pagination({
 								pageCount: totalPage,
 								current:pno,//当前第几页
@@ -66,22 +66,22 @@ $(function() {// 初始化内容
 								nextContent: '下页',
 								callback:PageClick
 							});
-						}			
+						}
 					},
 		            error: function (XMLHttpRequest, textStatus, errorThrown) {
 							alert('网络连接异常，请重试！')
 		            }
 				});
 				}
-                //回调函数  
+                //回调函数
                 PageClick = function(index){
-                    $('.now').text(index.getCurrent()); 
+                    $('.now').text(index.getCurrent());
  					loadList(index.getCurrent());//点击分页加载列表数据  */
                }
 		})
 
 
-});
+}
 function createCode(){
 				var totalPage =1;//总共多少页
 				var totalRecords = 1;//总共多少条
