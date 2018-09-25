@@ -186,6 +186,11 @@ function addpeople(){
 }
 window.onload=function(){
     var td="";
+    var role = get_cookie("userRole");
+    alert("不要这么皮呦");
+    if(role==="admin"){
+        window.location.href="../home.html";
+    }
     $.ajax({
         type: 'get',
         url: 'http://localhost:8077/t/person/getAllPerson', //配置统一的连接地址
@@ -230,7 +235,7 @@ function commitUpdata(){
     var tGender=$("#u-sex-a").text();
     var tEmail=$("#u-mod-email").val();
     var tMobile=$("#u-mod-phone").val();
-    var tRole=$("#u-role").text();
+    var tRole= $.trim($("#u-role").text());
     if(tUserName==""){
         alert("请输入用户名");
         flag=false;
@@ -371,4 +376,20 @@ function deleteperson(a){
             alert("后台请求失败，请重试！");
         },
     })
+}
+function get_cookie(Name) {
+    var search = Name + "%22%3A%22"//查询检索的值
+    var returnvalue = "";//返回值
+    if (document.cookie.length > 0) {
+        sd = document.cookie.indexOf(search);
+        if (sd!= -1) {
+            sd += search.length;
+            end = document.cookie.indexOf("%22%2C%22", sd);
+            if (end == -1)
+                end = document.cookie.length;
+            //unescape() 函数可对通过 escape() 编码的字符串进行解码。
+            returnvalue=unescape(document.cookie.substring(sd, end))
+        }
+    }
+    return returnvalue;
 }

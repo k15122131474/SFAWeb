@@ -115,5 +115,9 @@ window.onload=function () {
         $("#username").text(username);
         var roles = get_cookie("userRole")
         $("#roles").text(roles);
+        if(roles=="systemstrator"||roles=="strator"){
+            $("#setrole").attr("href","other/usergovern.html");
+        }
+        $("#headpic").attr("src","../img/headpic/"+get_cookie("userId")+".jpg");
     }
 }

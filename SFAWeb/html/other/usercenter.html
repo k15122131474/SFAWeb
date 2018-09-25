@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- Bootstrap Core CSS -->
+    <link href="../../css/bootstrap/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+    <link href="../../css/usercenter.css" type="text/css"/>
+    <!-- Custom CSS -->
+    <link href="../../css/bootstrap/css/style.css" rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="../../css/bootstrap/css/morris.css" type="text/css"/>
+    <!-- Graph CSS -->
+    <link href="../../css/bootstrap/css/font-awesome.css" rel="stylesheet">
+    <script src="../../js/jquery-2.1.4.min.js"></script>
+    <!-- //jQuery -->
+    <script src="../../js/jquery.nicescroll.js"></script>
+    <script src="../../js/htmljs/usercenter.js"></script>
+    <script>
+        function checksex(a) {
+            $("#sex-a").text(a.textContent);
+        }
+    window.onload= getinfo();
+    function getinfo() {
+        var id = get_cookie("userId");
+        $.ajax({
+            url: "http://localhost:8077/t/person/findInfoByUserId",
+            type: "get",
+            data: {tUserId: id},
+            dataType: "json",
+            contentType: 'application/json;charset=utf-8',
+            success: function (data) {
+                $("#mod-id").val(data.data.tUserName);
+                $("#mod-name").val(data.data.tCname);
+                $("#sex-a").text(data.data.tGender);
+                $("#mod-email").val(data.data.tEmail);
+                $("#mod-phone").val(data.data.tMobile);
+                $("#mod-pwd").val("a4af7d89sa7");
+                var id="<tr hidden='hidden'><td id='personId'>"+data.data.id+"</td><td id='userId'>"+data.data.tUserId+"</td>></tr>";
+                $("#updataModalLabel").append(id);
+            },
+            error: function () {
+
+            }
+        });
+    }
+    function get_cookie(Name) {
+        var search = Name + "%22%3A%22"//查询检索的值
+        var returnvalue = "";//返回值
+        if (document.cookie.length > 0) {
+            sd = document.cookie.indexOf(search);
+            if (sd!= -1) {
+                sd += search.length;
+                end = document.cookie.indexOf("%22%2C%22", sd);
+                if (end == -1)
+                    end = document.cookie.length;
+                //unescape() 函数可对通过 escape() 编码的字符串进行解码。
+                returnvalue=unescape(document.cookie.substring(sd, end))
+            }
+        }
+        return returnvalue;
+    }
+        function commitUpdata(){
+            var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;//正则表达式
+            var flag=true
+            var id=$("#personId").text();
+            var tUserId=$("#userId").text();
+            var tUserName=$("#mod-id").val();
+            var pwd=$("#mod-pwd").val();
+            var tCname=$("#mod-name").val();
+            var tGender=$("#sex-a").text();
+            var tEmail=$("#mod-email").val();
+            var tMobile=$("#mod-phone").val();
+            if(tUserName==""){
+                alert("请输入用户名");
+                flag=false;
+            }
+            if(pwd==""){
+                alert("请输入密码");
+                flag=false
+            }
+            if(tCname==""){
+                alert("请输入用户姓名");
+                flag=false;
+            }
+            if(tMobile!=""){
+                if(tMobile.length!=11){
+                    alert("请输入正确的手机号");
+                    flag=false;
+                }
+                if(isNaN(tMobile)){
+                    flag=false;
+                    alert("请输入正确的手机号");
+                }
+
+            }
+            if(tEmail!=""){
+                if(reg.test(tEmail) == false ) {
+                    alert("请输入正确的邮箱");
+                    flage=false;
+                }
+            }
+            if(tMobile==""){
+                alert("请输入正确的手机号");
+                flag=false;
+            }
+            if(pwd!="a4af7d89sa7"){
+                pwd=hex_md5(pwd);
+            }else{
+                pwd="";
+            }
+            requestJson={
+                id:id,
+                tUserId:tUserId,
+                tUserName:tUserName,
+                pwd:pwd,
+                tCname:tCname,
+                tGender:tGender,
+                tEmail:tEmail,
+                tMobile:tMobile,
+            }
+            $.ajax({
+                type: 'post',
+                url: 'http://localhost:8077/t/person/updataforpau', //配置统一的连接地址
+                data: JSON.stringify(requestJson),
+                //设置传输到后端的数据
+                dataType: 'json',
+                contentType: 'application/json;charset=utf-8',
+                crossDomain: true,
+                xhrFields: {
+                    withCredentials: true
+                },
+                success: function (data) {
+                    /*$("body").mLoading("hide");*/
+                    /*  window.parent.hide();*/
+                    if (data.data != null && data.code == 200) {
+                        alert(data.message);
+                    } else {
+                        alert(data.message);
+                    }
+                    window.location.reload();
+                },
+                error: function () {
+                    /*$("body").mLoading("hide");*/
+                    /* window.parent.hide();*/
+                    alert("后台请求失败，请重试！");
+
+                }
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        $(function(){
+            $("a.preview").preview();
+        });
+    </script>
+    <script src="../../js/imgPreviewQs.js" type="text/javascript"/>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../js/bootstrap.min.js"></script>
+    <!-- /Bootstrap Core JavaScript -->
+    <link rel="stylesheet" href="../../css/bootstrap/css/icon-font.min.css" type='text/css' />
+</head>
+<body>
+<div style="margin-left:auto;margin-right:auto;width:100%;text-align: center;background: #FFFFFF">
+    <nav class="navbar navbar-default navbar-static-top" >
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#" >个人中心</a>
+        </div>
+    </nav>
+    <div class="modal-body" style="text-align: center;background: #FFFFFF;max-width: 800px;margin-left:auto;margin-right:auto;">
+        <div id="updataModalLabel" hidden="hidden">
+        </div>
+        <!--<div>-->
+            <!--<form id="registSubmit" action="http://localhost:8077/t/win/fileUpload" method="post" enctype="multipart/form-data" >-->
+                <!--<p>选择文件: <input type="file" name="fileName"/></p>-->
+                <!--<p><input type="submit" id="id_submit" value="提交"/></p>-->
+            <!--</form>-->
+        <!--</div>-->
+        <!--<hr>-->
+        <div>
+            <img src="" width="200px" height="200px" id="img-change">
+            <div style="text-align: center">
+             <form id="formid" enctype="multipart/form-data">
+                 <input type="file" id="file" style="margin-top:1px;margin-left: auto;margin-right: auto;border-width: 1px;border-style: double;" onchange="filechange(event)"/>
+             </form>
+                 <button id="btn" onclick="registPost()">保存图片</button>
+            </div>
+        </div>
+        <hr>
+        <div>用户名：<input style="border:0px" id="mod-id" readonly="readonly"><br><br></div>
+    <div id="pwd-div">密&nbsp&nbsp&nbsp&nbsp码：<input type="password" id="mod-pwd"><br><br></div>
+    <div id="pwd-name">姓&nbsp&nbsp&nbsp&nbsp名：<input type="text" id="mod-name"><br></div>
+    <br>
+    <hr>
+    <div style="text-align: center;">性&nbsp&nbsp&nbsp&nbsp别</div>
+    <div class="dropdown" style="float:left;width: 40%;left:30%;border-width: 1px;border-style: solid">
+        <a id="sex-a" data-toggle="dropdown" href="#" style="color: #000">---选择性别----</a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+            <li style="text-align: center;" onclick="checksex(this)"><a>男</a>
+            </li>
+            <li style="text-align: center;" onclick="checksex(this)"><a>女</a>
+            </li>
+        </ul>
+    </div>
+    <br>
+    <hr>
+    <div>邮&nbsp&nbsp&nbsp&nbsp件：<input type="email" id="mod-email"><br><br></div>
+    <div>手机号：<input type="tel" id="mod-phone"><br><br></div>
+    <button id="conbtn" style="margin:1em;" onclick="commitUpdata()">提交</button>
+    <button style="margin:1em;" onclick="getinfo()">重置</button>
+</div>
+    </div>
+</body>
+</html>
