@@ -98,7 +98,7 @@ function submitZiDian(){
                 	type: "post",
                     url: "http://localhost:8077/t/company/add",
                     data:JSON.stringify(datas),
-                    contentType: "application/json", 
+                    contentType: "application/json",
                     dataType:"Json",
                     
 //           		beforeSend:function()
