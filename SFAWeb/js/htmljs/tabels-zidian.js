@@ -32,7 +32,7 @@ function createCode(){
 					            		      '<td>'+item.tDicCode+'</td>'+
 					            		      '<td>'+item.tName+'</td>'+
 					            		      '<td>'+item.tType+'</td>'+
-					            		      '<td><span> <button type="button" data-toggle="modal" data-target="#myModal"  onclick="chaxundan('+item.tDicId +')"> <span class=\"glyphicon glyphicon-pencil\"></span> </button> </span> '+
+					            		      '<td><span> <button type="button" data-toggle="modal" data-target="#myModal"  onclick="chaxundan ('+item.tDicId +')"> <span class=\"glyphicon glyphicon-pencil\"></span> </button> </span> '+
 					            		      '<span> <button type="button"  onclick="shanChu('+item.tDicId +')" > <span class=\"glyphicon glyphicon-trash\"></span> </button> </span>'+
 					            		      '</td>'+
 					            		  '</tr>';

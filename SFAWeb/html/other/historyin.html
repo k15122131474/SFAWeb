@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- Bootstrap Core CSS -->
+    <link href="../../css/bootstrap/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+    <!-- Custom CSS -->
+    <link href="../../css/bootstrap/css/style.css" rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="../../css/bootstrap/css/morris.css" type="text/css"/>
+    <!-- Graph CSS -->
+    <link href="../../css/bootstrap/css/font-awesome.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="../../js/jquery-2.1.4.min.js"></script>
+    <!-- //jQuery -->
+    <!-- tables -->
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap/css/table-style.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap/css/basictable.css" />
+    
+    <script type="text/javascript" src="../../js/jquery.basictable.min.js"></script>
+    <script type="text/javascript" src="../../js/htmljs/md5.js"/>
+    
+    <!-- //tables -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet' type='text/css'/>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <!-- lined-icons -->
+    <link rel="stylesheet" href="../../css/bootstrap/css/icon-font.min.css" type='text/css' />
+    <!-- //lined-icons -->
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#table').basictable();
+
+            $('#table-breakpoint').basictable({
+                breakpoint: 768
+            });
+
+            $('#table-swap-axis').basictable({
+                swapAxis: true
+            });
+
+            $('#table-force-off').basictable({
+                forceResponsive: false
+            });
+
+            $('#table-no-resize').basictable({
+                noResize: true
+            });
+
+            $('#table-two-axis').basictable();
+
+            $('#table-max-height').basictable({
+                tableWrapper: true
+            });
+        });
+    </script>
+</head>
+<body style="background: #FFFFFF">
+<div class="">
+    <nav class="navbar navbar-default navbar-static-top" >
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#" data-toggle="modal" data-target="#insertmodle">历史贷款</a>
+        </div>
+        <div class="input-group" style="margin-top: 0.5em;margin-right: 1em;float: right;width: 30%">
+            <input id="comid" type="text" class="form-control" placeholder="请输入债务方公司名称" aria-describedby="basic-addon2" >
+            <span class="input-group-addon" id="basic-addon2" style="width: 10%"><button style="border: none"  onclick="cha(2)">查询</button></span>
+        </div>
+    </nav>
+    <div class="page-container">
+        <!--/content-inner-->
+
+
+        <!--heder end here-->
+
+        <div class="agile-grids">
+            <!-- tables -->
+
+            <div class="agile-tables" style="padding-top: 0em;">
+                <div class="w3l-table-info" style="min-height: 400px">
+                    <h2>贷款信息</h2>
+                    <table id="table">
+                        <thead>
+                        <tr>
+                            <th>债权方公司</th>
+                            <th>债务方公司</th>
+                            <th>距离还款天数</th>
+                            <th>贷款开始时间</th>
+                            <th>贷款总额</th>
+                            <th>贷款结束时间</th>
+                            <th>提前预警天数</th>
+                            <th>违约金</th>
+                            <th>贷款利率</th>
+                            <th>还款总额</th>
+                            <th>还款状态</th>
+                        </tr>
+                        </thead>
+                        <tbody id="tbody">
+                        <tr>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    
+</div>
+
+
+<!--js -->
+<script src="../../js/jquery.nicescroll.js"></script>
+<script type="text/javascript" src="../../js/htmljs/history.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="../../js/bootstrap.min.js"></script>
+
+<!-- /Bootstrap Core JavaScript -->
+
+</body>
+</html>
