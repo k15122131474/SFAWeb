@@ -79,8 +79,6 @@ window.onload=function() {// 初始化内容
  					loadList(index.getCurrent());//点击分页加载列表数据  */
                }
 		})
-
-
 }
 function createCode(){
 				var totalPage =1;//总共多少页

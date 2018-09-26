@@ -23,10 +23,10 @@ function ioclick(a){
 
 
 function lodeiframe() {
-    //var h = document.getElementById("iframe-info");
-    //asdff = h.contentWindow.document.body.scrollHeight;
-    //if (parseInt(asdff) > 500) {
-    //    alert(asdff);
-    //    h.setAttribute('height', asdff);
-    //}
+    var h = document.getElementById("iframe-info");
+    h.setAttribute('height', "500px");
+    asdff = h.contentWindow.document.body.scrollHeight;
+    if(asdff>500){
+        h.setAttribute('height', asdff);
+    }
 }
