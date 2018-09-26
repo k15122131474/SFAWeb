@@ -21,11 +21,11 @@ function loanout(){
                 $.each(data.data,function(i,item){
                     htmls="<tr><td>"+item.tLoanoutComName+
                     "</td><td>"+item.tLoaninComName+
-                    "</td><td>"+item.tLoanPreTime+
+                    
                     "</td><td>"+item.tLoanStartTime+
                     "</td><td>"+item.tLoanNum+
                     "</td><td>"+item.tLoanEndTime+
-                    "</td><td>"+item.tWarnDays+
+                    
                     "</td><td>"+item.tWeiyueNum+
                     "</td><td>"+item.tLixi+
                     "</td><td>"+item.tChanghuanTotal+
@@ -64,11 +64,11 @@ function loanin(){
                 $.each(data.data,function(i,item){
                     htmls="<tr><td>"+item.tLoanoutComName+
                     "</td><td>"+item.tLoaninComName+
-                    "</td><td>"+item.tLoanPreTime+
+                  
                     "</td><td>"+item.tLoanStartTime+
                     "</td><td>"+item.tLoanNum+
                     "</td><td>"+item.tLoanEndTime+
-                    "</td><td>"+item.tWarnDays+
+                    
                     "</td><td>"+item.tWeiyueNum+
                     "</td><td>"+item.tLixi+
                     "</td><td>"+item.tChanghuanTotal+
