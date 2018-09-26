@@ -78,6 +78,7 @@ function logout(){
             if (data.data != null && data.code == 200) {
                 //
                 alert(data.message);
+                $.cookie('mycookie', null,{path: '/',expires: -1});
                 window.location.href="index.html";
             } else {
                 alert(data.message);
@@ -115,9 +116,11 @@ window.onload=function () {
         $("#username").text(username);
         var roles = get_cookie("userRole")
         $("#roles").text(roles);
-        if(roles=="systemstrator"||roles=="strator"){
-            $("#setrole").attr("href","other/usergovern.html");
-        }
         $("#headpic").attr("src","../img/headpic/"+get_cookie("userId")+".jpg");
+    }
+    var role = get_cookie("userRole");
+    if(role==="admin"){
+        $("#li-sysgovern").attr("hidden","hidden");
+        $("#li-com").attr("hidden","hidden");
     }
 }

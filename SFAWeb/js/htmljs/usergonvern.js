@@ -155,6 +155,7 @@ function addpeople(){
         tEmail:tEmail,
         tMobile:tMobile
     }
+    if(flag){
     $.ajax({
         type: 'post',
         url: 'http://localhost:8077/t/person/addUser', //配置统一的连接地址
@@ -183,11 +184,11 @@ function addpeople(){
 
         }
     });
+    }
 }
 window.onload=function(){
     var td="";
     var role = get_cookie("userRole");
-    alert("不要这么皮呦");
     if(role==="admin"){
         window.location.href="../home.html";
     }
@@ -262,7 +263,7 @@ function commitUpdata(){
     if(tEmail!=""){
         if(reg.test(tEmail) == false ) {
             alert("请输入正确的邮箱");
-            flage=false;
+            flag=false;
         }
     }
     if(tMobile==""){
@@ -292,6 +293,7 @@ function commitUpdata(){
         tRole:tRole,
         tStatus:tStatus
     }
+    if(flag){
     $.ajax({
         type: 'post',
         url: 'http://localhost:8077/t/person/updataforpau', //配置统一的连接地址
@@ -320,6 +322,7 @@ function commitUpdata(){
 
         }
     });
+    }
 }
 function reset(){
     var tPersonId=$("#personId").text();

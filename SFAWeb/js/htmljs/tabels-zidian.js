@@ -1,7 +1,7 @@
 
-$(function() {// 初始化内容
+window.onload=function() {// 初始化内容
     createCode();
-});
+}
 function createCode(){
 				var totalPage =1;//总共多少页
 				var totalRecords = 1;//总共多少条
