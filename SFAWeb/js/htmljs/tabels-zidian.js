@@ -114,7 +114,7 @@ function shanChu(id) {
   
                     success:function(data)
                     {
-               
+               			window.location.reload();
                         alert('删除成功');
                     },
                     error:function()
